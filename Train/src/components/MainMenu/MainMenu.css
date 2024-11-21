@@ -1,0 +1,164 @@
+/* Main Container */
+.main-menu-container {
+  padding: 40px;
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Main Menu Title */
+.menu-title {
+  font-size: 36px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+/* Cards Section */
+.menu-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+/* Card Styling */
+.menu-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-card:hover {
+  transform: scale(1.05); /* Card scaling effect on hover */
+}
+
+.card-image img {
+  width: 100%;
+  height: auto;
+  border-bottom: 4px solid #42a5f5;
+}
+
+.card-title {
+  font-size: 18px;
+  padding: 10px;
+  font-weight: bold;
+  color: #1565c0;
+}
+
+/* Train Gallery Section */
+.train-gallery {
+  margin-top: 80px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 28px;
+  color: #1565c0;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.gallery {
+  display: flex;
+  overflow-x: auto;
+  padding: 20px;
+  background-color: #0077ff;
+}
+
+.gallery-item {
+  gap: 50px;
+  min-width: 300px;
+  max-width: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+  width: 100%;
+  border-bottom: 4px solid #42a5f5;
+}
+
+h4 {
+  text-align: center;
+  padding: 10px;
+  background-color: #42a5f5;
+  color: white;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Add Photo Section */
+.add-photo-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.add-photo-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #42a5f5;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.add-photo-button:hover {
+  background-color: #1565c0;
+}
+
+.upload-button {
+  display: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .menu-title {
+    font-size: 30px;
+  }
+
+  .menu-cards {
+    gap: 20px;
+  }
+
+  .gallery-item {
+    min-width: 250px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-title {
+    font-size: 24px;
+  }
+
+  .menu-cards {
+    gap: 15px;
+  }
+
+  .gallery-item {
+    min-width: 200px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}

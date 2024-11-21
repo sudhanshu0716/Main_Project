@@ -1,0 +1,98 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+  }
+  
+  .crush-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  .crush-form-container {
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 30px;
+    width: 100%;
+    max-width: 700px;
+  }
+  
+  .crush-title {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .form-section {
+    margin-bottom: 30px;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #3498db;
+  }
+  
+  .form-entry {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  label {
+    font-size: 1rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  input:focus {
+    border-color: #3498db;
+  }
+  
+  .submit-button {
+    padding: 12px 20px;
+    background-color: #3498db;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+  
+  .submit-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .result {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #2c3e50;
+    font-weight: bold;
+    text-align: center;
+  }
+  
