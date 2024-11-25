@@ -1,4 +1,8 @@
-/* Main Container */
+/* Main Menu Container */
+*{
+  background-color: #6f6a02;
+}
+
 .main-menu-container {
   padding: 40px;
   width: 100%;
@@ -52,79 +56,80 @@
   color: #1565c0;
 }
 
-/* Train Gallery Section */
-.train-gallery {
-  margin-top: 80px;
-  padding: 20px;
+/* Carousel Container */
+.carousel-container {
+  margin-top: 300px;
+  display: grid;
+  grid-template-rows: 500px 100px;
+  grid-template-columns: 1fr 30px 30px 30px 30px 30px 30px 1fr;
+  align-items: center;
+  justify-items: center;
+  position: relative;
+  width: 100%;
   background-color: #f5f5f5;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  height: 1000px;
 }
 
-h2 {
-  font-size: 28px;
-  color: #1565c0;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-.gallery {
-  display: flex;
-  overflow-x: auto;
-  padding: 20px;
-  background-color: #0077ff;
-}
-
-.gallery-item {
-  gap: 50px;
-  min-width: 300px;
-  max-width: 300px;
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.gallery-item img {
+/* Carousel */
+main#carousel {
+  grid-row: 1 / 2;
+  grid-column: 1 / 9;
   width: 100%;
-  border-bottom: 4px solid #42a5f5;
+  height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 500px;
+  --items: 6;
+  --position: 1;
+  pointer-events: none;
 }
 
-h4 {
-  text-align: center;
-  padding: 10px;
-  background-color: #42a5f5;
-  color: white;
-  font-weight: bold;
-  margin: 0;
+div.item {
+  position: absolute;
+  width: 700px; /* Adjusted for larger images */
+  height:700px;
+  border-radius: 10px;
+  background-color: coral;
+  --r: calc(var(--position) - var(--offset));
+  --abs: max(calc(var(--r) * -1), var(--r));
+  transition: all 0.25s linear;
+  transform: scale(calc(1.2 - 0.1 * var(--abs)))
+    rotateY(calc(-10deg * var(--r)))
+    translateX(calc(-400px * var(--r))); /* Updated translateX */
+  z-index: calc((var(--items) - var(--abs)));
 }
 
-/* Add Photo Section */
-.add-photo-container {
-  margin-top: 20px;
-  text-align: center;
-}
+/* Individual Carousel Item Styles */
+div.item:nth-of-type(1) { --offset: 1; }
+div.item:nth-of-type(2) { --offset: 2; }
+div.item:nth-of-type(3) { --offset: 3; }
+div.item:nth-of-type(4) { --offset: 4; }
+div.item:nth-of-type(5) { --offset: 5; }
+div.item:nth-of-type(6) { --offset: 6; } /* Added for the 6th item */
 
-.add-photo-button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #42a5f5;
-  color: white;
-  font-weight: bold;
-  font-size: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
+/* Radio Button Styling */
+input:nth-of-type(1) { grid-column: 2 / 3; grid-row: 2 / 3; margin-top: 350px;}
+input:nth-of-type(1):checked ~ main#carousel { --position: 1; }
 
-.add-photo-button:hover {
-  background-color: #1565c0;
-}
+input:nth-of-type(2) { grid-column: 3 / 4; grid-row: 2 / 3;margin-top: 350px; }
+input:nth-of-type(2):checked ~ main#carousel { --position: 2; }
 
-.upload-button {
-  display: none;
-}
+input:nth-of-type(3) { grid-column: 4 / 5; grid-row: 2 / 3; margin-top: 350px;}
+input:nth-of-type(3):checked ~ main#carousel { --position: 3;}
+
+input:nth-of-type(4) { grid-column: 5 / 6; grid-row: 2 / 3;margin-top: 350px; }
+input:nth-of-type(4):checked ~ main#carousel { --position: 4; }
+
+input:nth-of-type(5) { grid-column: 6 / 7; grid-row: 2 / 3; margin-top: 350px;}
+input:nth-of-type(5):checked ~ main#carousel { --position: 5;}
+
+input:nth-of-type(6) { grid-column: 7 / 8; grid-row: 2 / 3;margin-top: 350px; }
+input:nth-of-type(6):checked ~ main#carousel { --position: 6;}
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
@@ -136,12 +141,13 @@ h4 {
     gap: 20px;
   }
 
-  .gallery-item {
-    min-width: 250px;
+  main#carousel {
+    height: 400px;
   }
 
-  h2 {
-    font-size: 24px;
+  div.item {
+    width: 400px;
+    height: 300px;
   }
 }
 
@@ -154,11 +160,12 @@ h4 {
     gap: 15px;
   }
 
-  .gallery-item {
-    min-width: 200px;
+  main#carousel {
+    height: 300px;
   }
 
-  h2 {
-    font-size: 20px;
+  div.item {
+    width: 300px;
+    height: 250px;
   }
 }

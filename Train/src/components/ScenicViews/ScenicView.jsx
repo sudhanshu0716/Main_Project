@@ -73,7 +73,20 @@ const ScenicView = () => {
       <div className="notification-box">
         <h3>Notifications</h3>
         {notifications.length > 0 ? (
-          notifications.map((note, index) => <p key={index}>{note}</p>)
+          notifications.map((note, index) => {
+            // Find the corresponding marker for the notification
+            const marker = markers.find((m) => `Nearby Place: ${m.title}` === note);
+            const imageUrl = `../../../public/assets/${marker?.title}.jpg`; // Path from the public directory
+
+            return (
+              <div key={index} className="notification-item">
+                <h5>{note}</h5>
+                <div className="image-box">
+                  <img src={imageUrl} alt={marker?.title} />
+                </div>
+              </div>
+            );
+          })
         ) : (
           <p>No nearby markers.</p>
         )}

@@ -1,121 +1,79 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { checkReports, submitReport } from "../../api/api"; // Import API functions
 import "./crush.css"; // CSS file for styling
 
 const CrushTheRush = () => {
-  // For checking field
   const [checkTrainNo, setCheckTrainNo] = useState("");
   const [checkDate, setCheckDate] = useState("");
   const [checkResult, setCheckResult] = useState("");
 
-  // For providing report field
   const [trainNo, setTrainNo] = useState("");
   const [date, setDate] = useState("");
-  const [scale, setScale] = useState(5); // Default scale set to 5
+  const [scale, setScale] = useState(5);
 
-  // Handling form submission for checking
-  const handleCheckSubmit = (e) => {
+  const [averageScale, setAverageScale] = useState(null);
+  const [crowdMessage, setCrowdMessage] = useState("");
+
+  const handleCheckSubmit = async (e) => {
     e.preventDefault();
-    // Logic to check the train status (could be a fetch call)
-    setCheckResult(`Checking rush for Train No. ${checkTrainNo} on ${checkDate}`);
+    try {
+      const data = await checkReports(checkTrainNo, checkDate);
+      if (data.reports) {
+        const { reports, averageScale } = data;
+        setCheckResult(`Reports for Train No. ${checkTrainNo} on ${checkDate}`);
+        setAverageScale(averageScale);
+
+        if (averageScale > 8) {
+          setCrowdMessage("Don't board this train, it's too overcrowded.");
+        } else if (averageScale >= 5) {
+          setCrowdMessage("Crowded but has a chance to board.");
+        } else {
+          setCrowdMessage("Easy to board, no crowd or medium crowd.");
+        }
+      }
+    } catch (error) {
+      setCheckResult("No reports available for this train on the given date.");
+      setAverageScale(null);
+      setCrowdMessage("");
+    }
   };
 
-  // Handling form submission for providing report
-  const handleReportSubmit = (e) => {
+  const handleReportSubmit = async (e) => {
     e.preventDefault();
-    // Logic to send the report (could be a fetch call)
-    alert(`Report submitted for Train No. ${trainNo} on ${date} with a scale of ${scale}`);
-    setTrainNo("");
-    setDate("");
-    setScale(5);
+    try {
+      await submitReport(trainNo, date, scale);
+      alert(`Report submitted for Train No. ${trainNo} on ${date} with a scale of ${scale}`);
+      setTrainNo("");
+      setDate("");
+      setScale(5);
+    } catch (error) {
+      alert("Error submitting the report.");
+    }
   };
 
   return (
     <div className="crush-container">
-      <motion.div
-        className="crush-form-container"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+      <motion.div className="crush-form-container" initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <h2 className="crush-title">Crush the Rush</h2>
-
         <div className="form-section">
           <h3 className="section-title">Check Train Rush</h3>
           <form onSubmit={handleCheckSubmit}>
-            <div className="form-entry">
-              <label htmlFor="checkTrainNo">Train Number</label>
-              <input
-                type="text"
-                id="checkTrainNo"
-                value={checkTrainNo}
-                onChange={(e) => setCheckTrainNo(e.target.value)}
-                placeholder="Enter Train Number"
-                required
-              />
-            </div>
-
-            <div className="form-entry">
-              <label htmlFor="checkDate">Date</label>
-              <input
-                type="date"
-                id="checkDate"
-                value={checkDate}
-                onChange={(e) => setCheckDate(e.target.value)}
-                required
-              />
-            </div>
-
-            <button type="submit" className="submit-button">
-              Check
-            </button>
+            <input type="text" value={checkTrainNo} onChange={(e) => setCheckTrainNo(e.target.value)} placeholder="Enter Train Number" required />
+            <input type="date" value={checkDate} onChange={(e) => setCheckDate(e.target.value)} required />
+            <button type="submit">Check</button>
           </form>
-
-          {checkResult && <p className="result">{checkResult}</p>}
+          {checkResult && <p>{checkResult}</p>}
+          {averageScale && <p>Average Scale: {averageScale}</p>}
+          {crowdMessage && <p>{crowdMessage}</p>}
         </div>
-
         <div className="form-section">
           <h3 className="section-title">Provide Train Report</h3>
           <form onSubmit={handleReportSubmit}>
-            <div className="form-entry">
-              <label htmlFor="trainNo">Train Number</label>
-              <input
-                type="text"
-                id="trainNo"
-                value={trainNo}
-                onChange={(e) => setTrainNo(e.target.value)}
-                placeholder="Enter Train Number"
-                required
-              />
-            </div>
-
-            <div className="form-entry">
-              <label htmlFor="date">Date</label>
-              <input
-                type="date"
-                id="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                required
-              />
-            </div>
-
-            <div className="form-entry">
-              <label htmlFor="scale">Scale (1-10)</label>
-              <input
-                type="number"
-                id="scale"
-                value={scale}
-                onChange={(e) => setScale(e.target.value)}
-                min="1"
-                max="10"
-                required
-              />
-            </div>
-
-            <button type="submit" className="submit-button">
-              Submit Report
-            </button>
+            <input type="text" value={trainNo} onChange={(e) => setTrainNo(e.target.value)} placeholder="Enter Train Number" required />
+            <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
+            <input type="number" value={scale} onChange={(e) => setScale(e.target.value)} min="1" max="10" required />
+            <button type="submit">Submit Report</button>
           </form>
         </div>
       </motion.div>

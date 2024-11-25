@@ -39,7 +39,7 @@ const FirstPage = () => {
     <div className="fp-container">
       {/* Header */}
       <div className="fp-header">
-        <h1 className="fp-title">Rail Journey Mate</h1>
+        <h1 className="fp-title">Rail Vista</h1>
         <div className="fpbutton">
         <button className="fp-login-btn" onClick={handleLogin}>
           Login

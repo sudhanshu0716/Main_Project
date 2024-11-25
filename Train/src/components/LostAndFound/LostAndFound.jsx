@@ -133,40 +133,42 @@ const LostAndFound = () => {
         </form>
       </div>
 
-      <div className="lost-items-list">
-        <h2>Unfounded Items</h2>
-        {lostItems.length > 0 ? (
-          <ul>
-            {lostItems.map((item) => (
-              <li key={item._id}>
-                <p>
-                  <strong>Train:</strong> {item.trainNumber} | <strong>Date:</strong> {item.date} | <strong>Description:</strong> {item.itemDescription}
-                </p>
-                <button onClick={() => markAsFounded(item._id)}>Mark as Founded</button>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No lost items found.</p>
-        )}
-      </div>
+      <div className="lost-and-found-lists">
+        <div className="lost-items-list">
+          <h2>Unfounded Items</h2>
+          {lostItems.length > 0 ? (
+            <ul>
+              {lostItems.map((item) => (
+                <li key={item._id}>
+                  <p>
+                    <strong>Train:</strong> {item.trainNumber} | <strong>Date:</strong> {item.date} | <strong>Description:</strong> {item.itemDescription}
+                  </p>
+                  <button onClick={() => markAsFounded(item._id)}>Mark as Founded</button>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No lost items found.</p>
+          )}
+        </div>
 
-      <div className="founded-items-list">
-        <h2>Founded Items</h2>
-        <button onClick={fetchFoundedItems}>Refresh Founded Items</button>
-        {foundedItems.length > 0 ? (
-          <ul>
-            {foundedItems.map((item) => (
-              <li key={item._id}>
-                <p>
-                  <strong>Train:</strong> {item.trainNumber} | <strong>Date:</strong> {item.date} | <strong>Description:</strong> {item.itemDescription}
-                </p>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No founded items found.</p>
-        )}
+        <div className="founded-items-list">
+          <h2>Founded Items</h2>
+          <button onClick={fetchFoundedItems}>Refresh Founded Items</button>
+          {foundedItems.length > 0 ? (
+            <ul>
+              {foundedItems.map((item) => (
+                <li key={item._id}>
+                  <p>
+                    <strong>Train:</strong> {item.trainNumber} | <strong>Date:</strong> {item.date} | <strong>Description:</strong> {item.itemDescription}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No founded items found.</p>
+          )}
+        </div>
       </div>
     </div>
   );

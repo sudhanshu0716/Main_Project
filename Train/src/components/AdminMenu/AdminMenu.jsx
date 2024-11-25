@@ -42,15 +42,6 @@ const AdminMenu = () => {
             <button className="card-button">Go to Admin Map</button>
           </Link>
         </div>
-
-        {/* Gallery Management Card */}
-        <div className="card">
-          <h3>Gallery Management</h3>
-          <p>View and manage the train gallery photos.</p>
-          <Link to="/admingallery">
-            <button className="card-button">Go to Gallery</button>
-          </Link>
-        </div>
       </div>
     </div>
   );

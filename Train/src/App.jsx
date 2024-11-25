@@ -10,25 +10,26 @@ import CrushTheRush from "./components/CrushTheRush/CrushTheRush";
 import AdminLogin from "./components/AdminLogin/AdminLogin";
 import AdminMap from "./components/AdminMap/AdminMap";
 import AdminMenu from "./components/AdminMenu/AdminMenu";
-import AdminGallery from "./components/AdminGallery/AdminGallery";
 import LostAndFoundAdminPanel from "./components/LostAndFoundAdminPanel/LostAndFoundAdminPanel";
+
 const App = () => {
   return (
     <Router>
       <Routes>
+        {/* User-facing routes */}
         <Route path="/" element={<FirstPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/main-menu" element={<MainMenu />} />
         <Route path="/lost" element={<LostAndFound />} />
-        <Route path="/scenic" element={<ScenicView/>} />
-        <Route path="/crush" element={<CrushTheRush/>} />
-        <Route path="/admin" element={<AdminLogin/>} />
-        <Route path="/adminmap" element={<AdminMap/>} />
-        <Route path="/adminmenu" element={<AdminMenu/>} />
-        <Route path="/admingallery" element={<AdminGallery/>} />
-        <Route path="/adminlost" element={<LostAndFoundAdminPanel/>} />
-
+        <Route path="/scenic" element={<ScenicView />} />
+        <Route path="/crush" element={<CrushTheRush />} />
+        
+        {/* Admin-facing routes */}
+        <Route path="/admin" element={<AdminLogin />} />
+        <Route path="/adminmap" element={<AdminMap />} />
+        <Route path="/adminmenu" element={<AdminMenu />} />
+        <Route path="/adminlost" element={<LostAndFoundAdminPanel />} />
       </Routes>
     </Router>
   );

@@ -22,7 +22,6 @@ const LoginPage = () => {
       const data = await response.json();
 
       if (response.ok) {
-        alert("Login Successful");
         localStorage.setItem("token", data.token); // Store the token in localStorage
         navigate("/main-menu"); // Redirect to main menu or dashboard
       } else {

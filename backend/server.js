@@ -5,9 +5,8 @@ const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
 const markedPointsRoutes = require('./routes/markedPoints');
 const lostAndFoundRoutes = require('./routes/lostAndFound');
-const adminRoutes = require('./routes/adminRoutes'); // Import admin routes\\
-
-
+const adminRoutes = require('./routes/adminRoutes');
+const reportRoutes = require('./routes/reportRoutes');  // Import new report routes
 
 dotenv.config();
 
@@ -28,9 +27,8 @@ mongoose
 app.use('/api/auth', authRoutes);
 app.use('/api/marked-points', markedPointsRoutes);
 app.use('/api/lost-and-found', lostAndFoundRoutes);
-
-// Admin routes
-app.use('/api/admin', adminRoutes); // Use admin routes with the /api/admin prefix
+app.use('/api/admin', adminRoutes);  // Admin routes
+app.use('/api/reports', reportRoutes);  // Add the new report routes
 
 // Start Server
 app.listen(port, () => {
