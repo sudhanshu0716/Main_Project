@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = "http://localhost:5000/api/reports"; // Backend API URL
+const apiUrl = "http://localhost:5000/api/reports"; 
 
 export const checkReports = async (trainNo, date) => {
   try {

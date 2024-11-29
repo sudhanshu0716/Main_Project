@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./FirstPage.css";
-
+import video from "../../assets/background-video2.mp4"
+import Logo from "../../assets/logo.png";
 
 const FirstPage = () => {
   const navigate = useNavigate();
-
   const [currentTagline, setCurrentTagline] = useState(0);
 
   // Dynamic taglines for the animation
@@ -27,9 +27,9 @@ const FirstPage = () => {
     navigate("/login");
   };
 
-  const handleLoginadmin=()=>{
-    b=navigate("/admin")
-  }
+  const handleLoginAdmin = () => {
+    navigate("/admin");
+  };
 
   const handleGetStarted = () => {
     navigate("/signup");
@@ -37,20 +37,23 @@ const FirstPage = () => {
 
   return (
     <div className="fp-container">
-      {/* Header */}
+      <video className="fp-background-video" autoPlay loop muted >
+        <source src={video} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
       <div className="fp-header">
-        <h1 className="fp-title">Rail Vista</h1>
+        <img className="fp-logo" src={Logo}></img>
         <div className="fpbutton">
-        <button className="fp-login-btn" onClick={handleLogin}>
-          Login
-        </button>
-        <button className="fp-login-btn" onClick={handleLoginadmin}>
-          Admin Login
-        </button>
+          <button className="fp-login-btn" onClick={handleLogin}>
+            Login
+          </button>
+          <button className="fp-login-btn" onClick={handleLoginAdmin}>
+            Admin Login
+          </button>
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="fp-main">
         <div className="fp-tagline">
           {taglines[currentTagline].map((line, index) => (
@@ -61,14 +64,13 @@ const FirstPage = () => {
         </div>
       </div>
       <button className="fp-get-started-btn" onClick={handleGetStarted}>
-          Get Started
-        </button>
+        Get Started
+      </button>
 
-      {/* Footer */}
       <footer className="fp-footer">
         <marquee className="fp-marquee" scrollamount="22">
-          "Indian Railways: Empowering the Nation with Speed, Seamless Connectivity, and an Expansive Network." ||  
-            "Indian Railways: Journey through India's Heart, Where Speed Meets Scenic Beauty on Every Track."
+          "Indian Railways: Empowering the Nation with Speed, Seamless Connectivity, and an Expansive Network." ||
+          "Indian Railways: Journey through India's Heart, Where Speed Meets Scenic Beauty on Every Track."
         </marquee>
       </footer>
     </div>

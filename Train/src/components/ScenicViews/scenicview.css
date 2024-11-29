@@ -1,25 +1,34 @@
+
+
 /* General container styles */
+.scenic-view {
+  min-height: 100vh; /* Ensure it covers the full viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../../assets/scenic.jpg);
+  background-size: cover;
+}
+
 .scenic-view-container {
-  font-family: 'Arial', sans-serif;
-  background-color: #f0f8ff;
   text-align: center;
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 1200px;
+  background-color: #ffffffe4; /* Inner container background */
+  margin: 0 20px;
+  position: fixed;
 }
 
-h1 {
-  font-size: 4rem;  /* Increased size for a bigger heading */
+.scenic-view-container h1 {
+  font-size: 4rem;
   color: #2a3d6a;
   margin-bottom: 20px;
   animation: fadeIn 1.5s ease-in-out;
 }
 
-
-
-button {
+.scenic-view-container button {
   padding: 12px 24px;
   background-color: #2a3d6a;
   color: white;
@@ -30,7 +39,7 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+.scenic-view-container button:hover {
   background-color: #405d8b;
 }
 
@@ -64,13 +73,7 @@ button:hover {
 }
 
 .notification-item:hover {
-  transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.notification-item p {
-  font-size: 1.1rem;
-  color: #555;
 }
 
 .image-box {

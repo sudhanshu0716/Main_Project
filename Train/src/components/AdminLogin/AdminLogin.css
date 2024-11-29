@@ -7,7 +7,7 @@
   }
   
   .admin-login-container {
-    background: white;
+    background: rgb(255, 255, 255);
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -18,26 +18,27 @@
   .admin-login-title {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
-    color: #333;
+    color: #000000;
   }
   
-  .admin-form-entry {
+  .admin-login-form {
     margin-bottom: 1.2rem;
   }
   
-  .admin-form-entry label {
+  /* .admin-login-form label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
     font-size: 0.9rem;
-  }
+  } */
   
-  .admin-form-entry input {
+  .admin-login-form input {
     width: 100%;
     padding: 0.8rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
+    margin-bottom: 15px;
   }
   
   .admin-login-button {
@@ -49,6 +50,7 @@
     font-size: 1rem;
     cursor: pointer;
     transition: background 0.3s;
+    margin-top: 10px;
   }
   
   .admin-login-button:hover {

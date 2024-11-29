@@ -23,8 +23,8 @@ const SignUpPage = () => {
 
       if (response.ok) {
         alert("Sign-Up Successful");
-        localStorage.setItem("token", data.token); // Store the token
-        navigate("/login"); // Redirect to login
+        localStorage.setItem("token", data.token); 
+        navigate("/login"); 
       } else {
         alert(data.message || "Sign-Up Failed");
       }

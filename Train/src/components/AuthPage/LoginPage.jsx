@@ -22,8 +22,8 @@ const LoginPage = () => {
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem("token", data.token); // Store the token in localStorage
-        navigate("/main-menu"); // Redirect to main menu or dashboard
+        localStorage.setItem("token", data.token); 
+        navigate("/main-menu"); 
       } else {
         alert(data.message || "Login Failed");
       }

@@ -17,7 +17,6 @@ const ScenicView = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    // Fetch marked points from the backend (MongoDB)
     const fetchMarkers = async () => {
       const response = await fetch("http://localhost:5000/api/marked-points");
       const data = await response.json();
@@ -30,11 +29,18 @@ const ScenicView = () => {
   useEffect(() => {
     if (userLocation) {
       const nearbyMarkers = markers.filter((marker) => {
-        const distance = calculateDistance(userLocation.lat, userLocation.lng, marker.latitude, marker.longitude);
+        const distance = calculateDistance(
+          userLocation.lat,
+          userLocation.lng,
+          marker.latitude,
+          marker.longitude
+        );
         return distance <= 2000; // Within 2 km
       });
 
-      const newNotifications = nearbyMarkers.map((marker) => `Nearby Place: ${marker.title}`);
+      const newNotifications = nearbyMarkers.map(
+        (marker) => `Nearby Place: ${marker.title}`
+      );
       setNotifications(newNotifications);
     }
   }, [userLocation, markers]);
@@ -66,30 +72,33 @@ const ScenicView = () => {
   };
 
   return (
-    <div className="scenic-view-container">
-      <h1>Scenic View</h1>
-      <button onClick={shareLocation}>Share Location</button>
+    <div className="scenic-view">
+      <div className="scenic-view-container">
+        <h1>Scenic View</h1>
+        <button onClick={shareLocation}>Share Location</button>
 
-      <div className="notification-box">
-        <h3>Notifications</h3>
-        {notifications.length > 0 ? (
-          notifications.map((note, index) => {
-            // Find the corresponding marker for the notification
-            const marker = markers.find((m) => `Nearby Place: ${m.title}` === note);
-            const imageUrl = `../../../public/assets/${marker?.title}.jpg`; // Path from the public directory
+        <div className="notification-box">
+          <h3>Notifications</h3>
+          {notifications.length > 0 ? (
+            notifications.map((note, index) => {
+              const marker = markers.find(
+                (m) => `Nearby Place: ${m.title}` === note
+              );
+              const imageUrl = `../../../public/assets/${marker?.title}.jpg`;
 
-            return (
-              <div key={index} className="notification-item">
-                <h5>{note}</h5>
-                <div className="image-box">
-                  <img src={imageUrl} alt={marker?.title} />
+              return (
+                <div key={index} className="notification-item">
+                  <h5>{note}</h5>
+                  <div className="image-box">
+                    <img src={imageUrl} alt={marker?.title} />
+                  </div>
                 </div>
-              </div>
-            );
-          })
-        ) : (
-          <p>No nearby markers.</p>
-        )}
+              );
+            })
+          ) : (
+            <p>No nearby markers.</p>
+          )}
+        </div>
       </div>
     </div>
   );

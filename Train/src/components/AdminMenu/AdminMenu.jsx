@@ -7,7 +7,7 @@ const AdminMenu = () => {
     <div className="admin-menu-container">
       <h1>Admin Menu</h1>
       <div className="card-container">
-        {/* Scenic Views Card */}
+
         <div className="card">
           <h3>Scenic Views</h3>
           <p>View and manage scenic view locations.</p>
@@ -16,7 +16,7 @@ const AdminMenu = () => {
           </Link>
         </div>
 
-        {/* Lost and Found Admin Panel Card */}
+     
         <div className="card">
           <h3>Lost and Found Admin Panel</h3>
           <p>Manage lost and found reports and data.</p>
@@ -25,7 +25,6 @@ const AdminMenu = () => {
           </Link>
         </div>
 
-        {/* Crush the Rush Card */}
         <div className="card">
           <h3>Crush the Rush</h3>
           <p>Manage rush hour locations and data.</p>
@@ -34,7 +33,7 @@ const AdminMenu = () => {
           </Link>
         </div>
 
-        {/* Admin Map Card */}
+    
         <div className="card">
           <h3>Admin Map</h3>
           <p>Manage map markers and locations.</p>

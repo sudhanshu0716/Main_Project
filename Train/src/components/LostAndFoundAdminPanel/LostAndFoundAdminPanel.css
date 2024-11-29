@@ -4,6 +4,8 @@
     padding: 20px;
     font-family: Arial, sans-serif;
     color: #333;
+    border: 5px solid black;
+    border-radius: 10px;
   }
   
   .lost-admin-container h1 {

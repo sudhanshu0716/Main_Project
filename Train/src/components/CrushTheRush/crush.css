@@ -17,10 +17,12 @@
     align-items: center;
     min-height: 100vh;
     padding: 20px;
+    background-image:url(../../assets/crush.jpg) ;
+    background-size: cover;
   }
   
   .crush-form-container {
-    background-color: #fff;
+    background-color: #ffffffee;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 30px;
@@ -72,7 +74,7 @@
     border-color: #3498db;
   }
   
-  .submit-button {
+  .button-check {
     padding: 12px 20px;
     background-color: #3498db;
     color: white;
@@ -95,4 +97,38 @@
     font-weight: bold;
     text-align: center;
   }
+  .meter-container {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .crowd-meter {
+    width: 100%;
+    margin: 10px 0;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 10px;
+    background: linear-gradient(to right, #4caf50, #ffeb3b, #f44336);
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .crowd-meter::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #3498db;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .crowd-meter::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background-color: #3498db;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
   

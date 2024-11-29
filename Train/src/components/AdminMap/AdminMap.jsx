@@ -16,8 +16,6 @@ const AdminMap = () => {
   const [markers, setMarkers] = useState([]);
   const [mode, setMode] = useState("add");
   const [markerTitle, setMarkerTitle] = useState("");
-
-  // Fetch markers from the database
   useEffect(() => {
     const fetchMarkers = async () => {
       try {
@@ -83,7 +81,7 @@ const AdminMap = () => {
   };
 
   return (
-    <div>
+    <div className="admin-map-container">
       <input
         type="text"
         placeholder="Enter title"
